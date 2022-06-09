@@ -19,8 +19,15 @@ public class ProductController {
     }
 
     @PostMapping("/save_product")
-    public Product saveProduct(@RequestBody Product product) {
+    public String saveProduct(@RequestBody Product product) {
         product.setId(UUID.randomUUID());
-        return productRepository.save(product);
+        productRepository.save(product);
+        return "/main";
+    }
+
+    @PostMapping("/update_product")
+    public String updateProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return "/main";
     }
 }
